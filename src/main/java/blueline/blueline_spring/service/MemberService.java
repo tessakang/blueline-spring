@@ -9,12 +9,19 @@ import java.util.List;
 import java.util.Optional;
 
 
+// @Autowired private MemberService memberService; // 필드를 이용하여 DI 적용
+
+
+
+
 // 아무런 @이 없는 상태는 순수한 자바클래스로 스프링이 해당 클래스를 안고 있을 수가 없음
 // -> **오류 발생**
 // Consider defining a bean of type 'hello.hellospring.service.MemberService' in your configuration.
 // -> 그래서 아래와 같이 @Service를 넣어줘야함.
-@Service
+//@Service
 public class MemberService {
+
+    // @Autowired private MemberService memberService; // 필드를 이용하여 DI 적용하는 방법(비추)
 
     // 서비스를 만드려면 레포지토리가 필요함
     // 아래 주석 처리된 코드는 직접 new 새로 생성하는 경우
@@ -24,10 +31,10 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
 
-    // 멤버 서비스를 만들 때 아래 생성차를 호출함.
+    // 멤버 서비 스를 만들 때 아래 생성차를 호출함.
     // 이때 AutoWired가 있으면 MemberRepository가 필요함을 인식하고 MemberRepository를 컨테이너에 넣어줌
     // 멤버 서비스는 멤버 지포지토리가 필요하기 때문
-    @Autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) { // 생성자임
         this.memberRepository = memberRepository;
     }

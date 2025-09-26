@@ -15,15 +15,21 @@ public class MemberController {
     // new로 새로 만들어거 사용 x
     private final MemberService memberService;
 
+    // setter로 DI 적용
+//    @Autowired
+//    public void setMemberService(MemberService memberService) {
+//        this.memberService = memberService;
+//    }
+
     // 생성자로 연결
     // 이 클래스에 선언된 @Controller로 인해 MemberController가 생성될 때 생성자가 호출됨
     // 이때 생성자에 AutoWired가 있으면 MemberService를 스프링이 스프링 컨테이너 안에 있는 MemberService에 연결시켜줌
     // 이것 또한 DI임 = 의존관계를 주입해줌
     @Autowired // 컨트롤러랑 Service 연결
-    // MemberService에도 @Autowired 추가해줘야함.
+//    연결 MemberService에도 @Autowired 추가해줘야함.
     public MemberController(MemberService memberService) {  // 생성자임
         // 만일 여기서 memberService 부분에 빨간 줄이 뜨는 경우
-        // -> MemberService를 확인해보기
+        // -> MemberServi ce를 확인해보기
         // -> MemeberService가 순수한 자바 클래스일 가능성 있음
         // 즉 따로 @이 없는 클래스이기 때문에 스프링에서 따로 컨테이너에 등록을 안 시켜줌
         // -> MemberService에 @Service를 추가하면 스프링이 등록시켜줌
