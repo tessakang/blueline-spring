@@ -4,8 +4,11 @@ import blueline.blueline_spring.domain.Member;
 import blueline.blueline_spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -28,6 +31,14 @@ public class MemberController {
         memberService.join(member); //member 넘김
 
         return "redirect:/"; // 홈 화면으로 보내기
+    }
+
+
+    @GetMapping(value = "/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers(); // member를 다 가지고 올 수 있음
+        model.addAttribute("members", members); // 멤버 리스트 전체를 모델에 담아서 화면에 전달
+        return "members/memberList";
     }
 
 }
