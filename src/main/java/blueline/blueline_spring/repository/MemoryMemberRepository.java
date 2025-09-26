@@ -1,9 +1,11 @@
 package blueline.blueline_spring.repository;
 
 import blueline.blueline_spring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L; //시퀀스 : Key 값을 생성해주는 것
@@ -32,6 +34,7 @@ public class MemoryMemberRepository implements MemberRepository{
                 .findAny(); // 찾으면 반환
     }
 
+    // 테스트를 할 때마다 데이터를 clear해주기 위해 해당 메소드 필요
     public void clearStore() {
         store.clear();
     }

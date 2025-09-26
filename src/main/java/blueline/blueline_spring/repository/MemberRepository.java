@@ -1,7 +1,6 @@
 package blueline.blueline_spring.repository;
 
 import blueline.blueline_spring.domain.Member;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
 package blueline.blueline_spring.domain;
 
 public class Member {
-    // 요구사항- id 식별자, 이
+    // 요구사항- id 식별자, 이름
     private Long id;
     private String name;
 
